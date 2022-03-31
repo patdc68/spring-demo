@@ -4,9 +4,7 @@ import com.example.springdemo.model.Student;
 import com.example.springdemo.service.StudentService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -20,4 +18,16 @@ public class StudentController {
     public List<Student> getStudents(){
         return studentService.getStudents();
     }
+
+    @PostMapping("/student")
+    private int saveStudent(@RequestBody Student student) {
+        studentService.saveOrUpdate(student);
+        return student.getId();
+    }
+
+    @DeleteMapping("/student/{id}")
+    private void deleteStudent(@PathVariable("id") int id) {
+        studentService.delete(id);
+    }
+
 }
