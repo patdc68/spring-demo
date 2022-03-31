@@ -10,6 +10,7 @@ import javax.persistence.Table;
 public class Student {
 
     @Id
+    @Column
     Integer id;
 
     @Column
@@ -18,22 +19,20 @@ public class Student {
     @Column
     Integer age;
 
-    public Student(String name, Integer id, Integer age) {
-        this.name = name;
-        this.id = id;
-        this.age = age;
-    }
+    @Column
+    String email;
+
+
 
     public Student() {
 
     }
 
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
+    public Student(Integer id, String name, Integer age, String email) {
+        this.id = id;
         this.name = name;
+        this.age = age;
+        this.email = email;
     }
 
     public Integer getId() {
@@ -44,11 +43,27 @@ public class Student {
         this.id = id;
     }
 
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
     public Integer getAge() {
         return age;
     }
 
     public void setAge(Integer age) {
         this.age = age;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
     }
 }
