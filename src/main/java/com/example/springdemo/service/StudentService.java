@@ -32,4 +32,9 @@ public class StudentService {
     public void delete(int id){
         studentRepository.deleteById(id);
     }
+
+    public void update(Student student, int id){
+        student.setName("Patrick");
+        studentRepository.save(student);
+    }
 }

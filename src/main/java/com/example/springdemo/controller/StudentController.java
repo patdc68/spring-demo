@@ -15,7 +15,7 @@ public class StudentController {
     StudentService studentService;
 
     @GetMapping(value = "/get-all-students", produces = MediaType.APPLICATION_JSON_VALUE)
-    public List<Student> getStudents(){
+    public List<Student> getStudents() {
         return studentService.getStudents();
     }
 
@@ -26,8 +26,15 @@ public class StudentController {
     }
 
     @DeleteMapping("/student/{id}")
-    private void deleteStudent(@PathVariable("id") int id) {
+    private String deleteStudent(@PathVariable("id") int id) {
         studentService.delete(id);
+        return "Deleted by id";
+    }
+
+    @PutMapping("/student/{id}")
+    private Student update(@RequestBody Student student,@PathVariable("id") int id){
+        studentService.update(student, id);
+        return student;
     }
 
 }
