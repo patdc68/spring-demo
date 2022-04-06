@@ -1,9 +1,6 @@
 package com.example.springdemo.model;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 @Entity
 @Table(name = "student")
@@ -11,6 +8,7 @@ public class Student {
 
     @Id
     @Column
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     Integer id;
 
     @Column
@@ -21,7 +19,6 @@ public class Student {
 
     @Column
     String email;
-
 
 
     public Student() {
